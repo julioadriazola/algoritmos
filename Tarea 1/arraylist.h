@@ -12,7 +12,7 @@ namespace KangaParty
 class ArrayList
 {
     private:  
-      Canguro **canguroList;
+      Canguro **canguroList; //Explicame esto porfa xD Por qué ** y no simplemente *?
       int _length; //cantidad de CANGUROS
       int arrayLength;
       

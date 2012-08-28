@@ -4,6 +4,10 @@
 #include <iostream>
 #include <sstream>
 
+//Por qué this->_id = source._id + 1; (En método copia) ??? Filo
+//Por qué no está definido el método del operador = ???
+//Qué hace " que estaba en "<<this ??
+
 
 namespace KangaParty
 {

@@ -6,6 +6,7 @@
 #ifndef NULL
 #define NULL 0 //defino null
 #endif
+// *** WTF es esto?
 
 namespace KangaParty
 {
@@ -17,14 +18,14 @@ ArrayList::ArrayList(int length)
 	this->arrayLength = length;
 	for(int i=0; i<length; i++)
 	{
-        canguroList[i] = new Canguro(i);            
+        canguroList[i] = new Canguro(i);     //Y no se pone como puntero?? =(       
     }
 }
 
 // class destructor
 ArrayList::~ArrayList()
 {
-	cout << "se destruye la ArrayList de canguros :(";
+	cout << "se destruye la ArrayList de canguros :("; // u.u que penita
 }
 
 void ArrayList::add(int index, Canguro * nuevoCang)
