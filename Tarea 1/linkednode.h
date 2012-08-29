@@ -21,6 +21,7 @@ public:
 		void setNext(LinkedNode * next,bool destroy);
 		Canguro* getContent();
 		void setContent(Canguro * content,bool destroy);
+		void mostrarTodo();
 		
 };
 }

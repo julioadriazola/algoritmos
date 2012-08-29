@@ -2,13 +2,23 @@
 #include <iostream>
 #include "arraylist.h"
 #include "canguro.h"
+#include "linkednode.h"
 
 using namespace std;
 using namespace KangaParty;
 
 int main(int argc, char *argv[])
 {
-    int n;
+    
+    Canguro pa(1);
+    Canguro pa1(2);
+    cout << "---===Creando prueba1===---" << endl;
+    LinkedNode prueba1(&pa);
+     cout << "---===Creando prueba2===---" << endl;
+    LinkedNode prueba2(&pa);
+    
+    
+    /*int n;
     
     cout << "Ingrese el numero de canguros en la fiesta." << endl;
     cin >> n;
@@ -32,11 +42,12 @@ int main(int argc, char *argv[])
     //aList.print();
     //aList.remove(2);
     aList.print();  
+    */
     
     int option;
     while(true)
     {
-        if(aList.isEmpty()) cout <<"vacio ctm"<< endl;
+       // if(aList.isEmpty()) cout <<"vacio ctm"<< endl;
         cin >> option;
         if(option==3) break;       
     }
