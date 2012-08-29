@@ -1,7 +1,7 @@
 [Project]
 FileName=Tarea 1.dev
 Name=Tarea 1
-UnitCount=7
+UnitCount=9
 Type=1
 Ver=1
 ObjFiles=
@@ -109,6 +109,26 @@ BuildCmd=
 
 [Unit7]
 FileName=linkedlist.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit8]
+FileName=linkednode.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit9]
+FileName=linkednode.cpp
 CompileCpp=1
 Folder=
 Compile=1
