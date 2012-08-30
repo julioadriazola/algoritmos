@@ -120,10 +120,14 @@ void LinkedList::remove(int index)
 {
      if(index>=0 and index <_length)
      {
+     
+     
              if(index==0)
              {
               LinkedNode * tmp=_cursor;
               _cursor=_cursor->getNext();
+              cout << "Se elimino al Canguro en la posicion " << index << " de la lista" << endl;
+              (tmp->getContent())->printInfo(true);
               tmp->setNext(NULL);
               delete tmp;
              }
@@ -136,10 +140,13 @@ void LinkedList::remove(int index)
                }
                LinkedNode* tmp1=tmp->getNext();
                tmp->setNext(tmp1->getNext());
+               cout << "Se elimino al Canguro en la posicion " << index << " de la lista" << endl;
+              (tmp1->getContent())->printInfo(true);
                tmp1->setNext(NULL);
                delete tmp1;
              }
              _length--;
+             
      }
      else
      {
@@ -165,9 +172,12 @@ void LinkedList::print(int index)
 void LinkedList::print()
 {
      cout << "******************************************************"<< endl;
+     cout << "POSICION LISTA\t\t ID\t\tNOMBRE\t\tALTURA DE SALTO"<<endl;
      LinkedNode* tmp=_cursor;
+     int post=0;
      while(tmp!=NULL)
      {
+     cout << post++ << "\t\t";
      (tmp->getContent())->printInfo(false);    
      tmp=tmp->getNext();
      }

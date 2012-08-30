@@ -114,8 +114,25 @@ int main(int argc, char *argv[])
                      }
         if(option==6)
         {
-                     cout << "Funcion 6 no implementada todavia" << endl;
+                     if (lista->isEmpty())
+                     {
+                     cout << "La lista está vacia" << endl;
+                                          }
+                     else{
+                          if(lista->size()==1)
+                          {
+                          cout << "Quedaba solo 1 elemento en la lista, esta se vacio" << endl;
+                               lista->remove(0);
+                          }
+                          else
+                          {
+                              int index;
+                              cout << "Que canguro desea eliminar? (Entre 0 y " << lista->size()-1 << ")" << endl;
+                              cin>>index;
+                              lista->remove(index);
+                          }
                      }
+        }
         if(option==7)
         {
                      char name[40];

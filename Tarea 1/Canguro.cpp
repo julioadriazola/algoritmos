@@ -63,7 +63,7 @@ namespace KangaParty
           {
                if(withHeader)
                {
-                cout <<"     info: -id: "<<_id << ":           -nombre: " << nombre << "                           -altura de salto: " << jumpHeight << endl;
+                cout <<"     info: -id: "<<_id << ":" <<endl<< "           -nombre: " << nombre << "                           -altura de salto: " << jumpHeight << endl;
                }
                else
                {

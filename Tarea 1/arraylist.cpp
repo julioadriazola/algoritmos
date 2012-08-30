@@ -93,6 +93,10 @@ bool ArrayList::isEmpty()
 
 void ArrayList::remove(int position)
 {
+     if(position>=0 and position <_length)
+     {
+     cout << "Se elimino al Canguro en la posicion " << position << " de la lista" << endl;
+     (canguroList[position])->printInfo(true);
      delete canguroList[position];
      for (int i = position; i < _length-1; i++)
      {
@@ -100,14 +104,22 @@ void ArrayList::remove(int position)
      }
      canguroList[_length-1] = NULL;
      _length--;
+     
+             
+     }
+     else
+     {
+         cout << "Error: Out of Range" << endl;
+     }
 }
 
 void ArrayList::print()
 {  cout << "******************************************************"<< endl;
+     cout << "POSICION LISTA\t\t ID\t\tNOMBRE\t\tALTURA DE SALTO"<<endl;
      for(int i=0; i<_length; i++)
      {
              if(canguroList[i]==NULL){cout << "Error: NULL reference" <<endl;}
-             else canguroList[i]->printInfo(false);
+             else {cout << i << "\t\t"; canguroList[i]->printInfo(false);}
      }
 }
 
