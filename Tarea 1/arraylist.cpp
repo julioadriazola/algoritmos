@@ -18,7 +18,7 @@ ArrayList::ArrayList(int length)
 	this->arrayLength = length;
 	for(int i=0; i<length; i++)
 	{
-        canguroList[i] = new Canguro(i);     //Y no se pone como puntero?? =(       
+        canguroList[i] = new Canguro();     //Y no se pone como puntero?? =(       
     }
 }
 

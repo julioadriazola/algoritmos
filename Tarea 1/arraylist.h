@@ -4,12 +4,13 @@
 #define ARRAYLIST_H
 
 #include "canguro.h"
+#include "IListable.h"
 /*
  * No description
  */
 namespace KangaParty
 {
-class ArrayList
+class ArrayList: public IListable
 {
     private:  
       Canguro **canguroList; //Explicame esto porfa xD Por qué ** y no simplemente *?
@@ -23,11 +24,11 @@ class ArrayList
 		~ArrayList();
 		
 		//===De Interfaz===
-		int size();
-		void add(int index, Canguro * nuevoCang);
-		Canguro get(int index);
-		bool isEmpty();
-		void remove(int position);
+		virtual int size();
+		virtual void add(int index, Canguro * nuevoCang);
+		virtual Canguro get(int index);
+		virtual bool isEmpty();
+		virtual void remove(int position);
 		//=================
 		
 		void print();

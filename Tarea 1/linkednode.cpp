@@ -29,43 +29,62 @@ cout << "Se creo el LinkedNode en la posicion: "<<this<<endl;
 mostrarTodo();
                                }
                                
+LinkedNode::LinkedNode(const LinkedNode& source)
+{            
+             *this=source;
+            cout << "se copia" << endl;
+}
+
+//Sobrecarga =
+LinkedNode& LinkedNode::operator= (const LinkedNode &source)
+{
+            if(this== &source)
+            return *this;
+            
+            _content=source._content;
+            _next=source._next;
+            cout << "se sobrecarga" << endl;
+            return *this;
+}
+                               
 void LinkedNode::mostrarTodo()
 {
      cout << "Su contenido es: "<<this->_content<<endl;
      cout << this->_content->show("id")<<" " << this->_content->show("nombre")<<" " << this->_content->show("jumpHeight")<<endl;
      cout << "Next apunta a: "<<this->_next <<endl;
  }
-
+ 
+//Problema aquí D: En tiempo de ejecución funciona bien
+//Al terminar pasa algo raro y se queda en un ciclo infinito ¿Cómo solucionarlo?
 LinkedNode::~LinkedNode(){
-	cout << "murió el LinkedNode en una explosión :(";
+	cout << "murio el LinkedNode en una explosion :(" << endl;
 }
 
+void LinkedNode::preDestroy()
+{
+     if(_next!=NULL){
+     _next->preDestroy();
+     delete _next;}
+     if(_content!=NULL)
+     {
+     delete _content;
+     }
+ }
 LinkedNode * LinkedNode::getNext()
 {
            return this->_next; 
 }          
-void LinkedNode::setNext(LinkedNode * next, bool destroy)
+void LinkedNode::setNext(LinkedNode * next)
 {
      //Ver si es necesario agregar el "destroy" o si se puede ver por fuera
-     if(destroy==1)
-     {
-         if(_next==NULL)
-         {
-                this->_next=next;        }
-         else
-         {
-             LinkedNode* temp=_next;
-             this->_next=next;
-             delete temp;
-         }
-     }
-     else
-     {
          if(_next==NULL)
          {
                 this->_next=next;   
-                       } 
-     }
+                       }
+         else
+         {
+             this->_next=next;
+         }
      
  }          
 
@@ -73,7 +92,8 @@ Canguro * LinkedNode::getContent()
 {
            return this->_content; 
 }         
- 
+
+/* 
 void LinkedNode::setContent(Canguro * content, bool destroy)
 {
      //Ver si es necesario agregar el "destroy" o si se puede ver por fuera
@@ -102,6 +122,6 @@ void LinkedNode::setContent(Canguro * content, bool destroy)
      }
      
  }  
-
+*/
 
 }

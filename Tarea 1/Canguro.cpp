@@ -11,29 +11,42 @@
 
 namespace KangaParty
 {
+          int Canguro::count = 0;
+          
+          Canguro::Canguro(){}
           Canguro::Canguro(int id){ 
                                
-                          this->_id = id;    
+                          this->_id = count;  
+                          count++;  
                           cout << "Ingrese el nombre del canguro " << _id << endl;
                           cin >> nombre;
                           cout << "Ingrese la altura de salto del canguro " << _id << endl;
                           cin >> jumpHeight;                          
           };
           
-          Canguro::Canguro(const Canguro& source){
-                                 
-                          this->_id = source._id + 1;
-                          this->nombre = source.nombre;      
-                                 
-                          cout << "SE COPIO EL CANGURO " << source._id << endl;      
+          Canguro::Canguro(string name, double jump){ 
+                               
+                          this->_id = count;  
+                          count++;
+                          nombre=name;
+                          jumpHeight=jump;                    
           };
           
-          Canguro& Canguro::operator= (const Canguro &source){};
+          Canguro::Canguro(const Canguro& source){
+                                 
+                          this->_id = source._id;
+                          this->nombre = source.nombre;
+                          this->jumpHeight= source.jumpHeight;    
+          };
           
-          Canguro::~Canguro(){
-                              
-                         cout << "SE DESTRUYO EL CANGURO " << this->_id << " que estaba en "<<this<< endl;                                       
+          Canguro& Canguro::operator= (const Canguro &source){
+          this->_id = source._id;
+                          this->nombre = source.nombre;
+                          this->jumpHeight= source.jumpHeight; 
+          };
           
+          Canguro::~Canguro(){ 
+                         cout << "SE DESTRUYO EL CANGURO " << _id << endl;                                       
           };
           
           string Canguro::show(string atributo)

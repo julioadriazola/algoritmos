@@ -16,16 +16,22 @@ namespace KangaParty
 class Canguro
 	{
           int _id;
-          int jumpHeight;
+          double jumpHeight;
           string nombre;
        
 		public:
 			
+			Canguro();
 			Canguro(int id);
+			Canguro (string name,double jump); 
 			Canguro(const Canguro& source); //contructor copia
 			Canguro& operator= (const Canguro &source); //asignación		
 			~Canguro(); //destructor
 			string show(string atributo);
+		
+		private:
+                
+                static int count;
 		
 	};
 }

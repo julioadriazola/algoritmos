@@ -3,19 +3,185 @@
 #include "arraylist.h"
 #include "canguro.h"
 #include "linkednode.h"
+#include "linkedlist.h"
+#include "IListable.h"
+#include <fstream>
+#include <vector>
+
+#ifndef NULL
+#define NULL 0 //defino null
+#endif
 
 using namespace std;
 using namespace KangaParty;
 
+
+vector<string> split(const string& strValue, char separator)
+{
+    vector<string> vecstrResult;
+    int startpos=0;
+    int endpos=0;
+
+    endpos = strValue.find_first_of(separator, startpos);
+    while (endpos != -1)
+    {       
+        vecstrResult.push_back(strValue.substr(startpos, endpos-startpos)); // add to vector
+        startpos = endpos+1; //jump past sep
+        endpos = strValue.find_first_of(separator, startpos); // find next
+        if(endpos==-1)
+        {
+            //lastone, so no 2nd param required to go to end of string
+            vecstrResult.push_back(strValue.substr(startpos));
+        }
+    }
+
+    return vecstrResult;
+}
+
+
+
 int main(int argc, char *argv[])
 {
     
+    //********IMPORTANTE. VER EL ENUNCIADO PARA QUE NO FALTE NADA
+    //****CONSTRUCTOR DESTRUCTOR COPIA Y OPERADOR =
+    //****** MENU PARA CONSULTAR POR NOMBRE O ALTURA, Y LISTAR TODOS LOS CANGUROS
+    //***** E INGRESO CANGUROS POR ARCHIVOS
+    cout << "Bienvenido a la Fiesta de los Canguros!!" << endl;
+    
+    int op;
+    while (true)
+    {
+          
+          cout << "Indique el tipo de implementacion que desea:" <<endl;
+          cout << "1. ArrayList" << endl;
+          cout << "2. LinkedList" << endl;
+          cin >> op;
+          if(op==1 || op==2) break;
+    }
+    
+    //Aqui se supone que hay que usar la interfaz
+    IListable* lista;
+    if(op==1)
+    {
+             lista=new ArrayList(100);
+             }
+    else
+    {
+        lista= new LinkedList();
+    }
+   
+    int option;
+    while(true)
+    {
+        cout << "MENU" << endl;
+        cout << "1. Consultar por altura de salto" << endl;
+        cout << "2. Consultar por nombre" << endl;
+        cout << "3. Consultar por altura y nombre" << endl;
+        cout << "4. Listar a todos los canguros" << endl;
+        cout << "5. Consultar existencia" << endl; //<---?????
+        cout << "6. Eliminar un canguro" << endl;
+        cout << "7. Agregar canguros desde un archivo" <<endl;
+        cout <<endl  << endl << endl;
+        cout << "0. Salir" << endl;
+        cin >> option;
+        
+        if(option==7)
+        {
+                     char name[40];
+                     cout << "Ingrese el nombre del archivo" << endl;
+                     cin >> name;
+                     ifstream file;
+                     file.open(name);
+                     if (file.is_open())
+                     {
+                         int i=0;
+                         string LINE;
+                         while(!file.eof())
+                         {
+                           getline(file,LINE);
+                           if(i==0)
+                           {}
+                           else
+                           {
+                               vector<string> splited=split(LINE,'\t');
+                               
+                               if(splited.size()==2)
+                               {
+                                    Canguro tmp= Canguro(splited[0],atof(splited[1]));  
+                                    lista->add(i-1,&tmp);            
+                                }
+                               
+                           }
+                           i++;
+                         }
+                         file.close();
+                     }
+                                     
+                     
+        }
+        
+        if(option==0) break;       
+    }
+
+    system("PAUSE");
+    return EXIT_SUCCESS;
+    
+    
+    /*
+    Canguro pa0(10);
+    Canguro pa1(1);
+    Canguro pa2(2);
+    LinkedList linked;
+    cout << "Largo actual: " << linked.size()<< endl;
+    cout << "Agregamos el primer elemento" << endl;
+    linked.add(0,&pa0);
+    cout << "Agregamos el segundo elemento" << endl;
+    linked.add(1,&pa1);
+    cout << "Largo actual: " << linked.size()<< endl;
+    cout << "Consultamos por el elemento en la posicion 0" << endl;
+    linked.add(2,&pa2);
+    cout << "Largo actual: " << linked.size()<< endl;
+    
+    linked.print(0);
+    linked.print(1);
+    linked.print(2);
+    LinkedList tmp;
+    tmp=linked;
+    tmp.print();
+    LinkedList tmp1=linked;
+    tmp1.print();
+    //cout << tmp1.size() << endl;
+    tmp1.print(0);
+    tmp1.remove(0);
+    tmp1.print(0);
+    LinkedList * tmp2= new LinkedList();
+    Canguro pa3(3);
+    tmp2->add(0,&pa3);
+    
+    delete tmp2;
+    */
+    
+    
+    
+    /*
     Canguro pa(1);
     Canguro pa1(2);
+    Canguro pa2(3);
     cout << "---===Creando prueba1===---" << endl;
     LinkedNode prueba1(&pa);
      cout << "---===Creando prueba2===---" << endl;
-    LinkedNode prueba2(&pa);
+    LinkedNode prueba2(&pa1,&prueba1);
+    cout << "---===Creando prueba3===---" << endl;
+    LinkedNode prueba3(&pa2);
+    cout << "---===Creando prueba4===---" << endl;
+    LinkedNode prueba4(&pa2,&prueba2);
+    cout << "---===Borrando prueba2===---" << endl;
+    delete &prueba2;
+    prueba4.setNext(NULL);
+    cout << "---===Mostrando prueba4 nuevamente===---" <<endl;
+    prueba4.mostrarTodo();
+    */
     
     
     /*int n;
@@ -44,14 +210,4 @@ int main(int argc, char *argv[])
     aList.print();  
     */
     
-    int option;
-    while(true)
-    {
-       // if(aList.isEmpty()) cout <<"vacio ctm"<< endl;
-        cin >> option;
-        if(option==3) break;       
-    }
-    
-    system("PAUSE");
-    return EXIT_SUCCESS;
 }

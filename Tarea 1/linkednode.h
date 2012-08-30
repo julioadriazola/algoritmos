@@ -9,19 +9,24 @@ namespace KangaParty
 {
 class LinkedNode
 {
-private:
-        LinkedNode* _next;
-        Canguro* _content;
+        
 public:
+       LinkedNode* _next;
+        Canguro* _content;
         LinkedNode(Canguro * content, LinkedNode * next);
         //Constructor con puntero a "null"
         LinkedNode(Canguro * content);
 		~LinkedNode();
+		//Copia
+		LinkedNode(const LinkedNode& source);
+		//Sobrecarga operador =
+		LinkedNode& operator= (const LinkedNode &source);
 		LinkedNode* getNext();
-		void setNext(LinkedNode * next,bool destroy);
+		void setNext(LinkedNode * next);
 		Canguro* getContent();
-		void setContent(Canguro * content,bool destroy);
+		//void setContent(Canguro * content,bool destroy);
 		void mostrarTodo();
+		void preDestroy();
 		
 };
 }
