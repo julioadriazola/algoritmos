@@ -68,7 +68,7 @@ namespace KangaParty
                else
                {
                   
-                   if(nombre.size>=8)          
+                   if(nombre.size()>=8)          
                    cout <<_id << "\t\t" << nombre << "\t"<< jumpHeight << endl;
                    else
                    cout <<_id << "\t\t" << nombre << "\t\t"<< jumpHeight << endl;
