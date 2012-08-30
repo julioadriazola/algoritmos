@@ -40,6 +40,7 @@ vector<string> split(const string& strValue, char separator)
 
 
 
+
 int main(int argc, char *argv[])
 {
     
@@ -105,11 +106,21 @@ int main(int argc, char *argv[])
                            else
                            {
                                vector<string> splited=split(LINE,'\t');
-                               
                                if(splited.size()==2)
                                {
-                                    Canguro tmp= Canguro(splited[0],atof(splited[1]));  
-                                    lista->add(i-1,&tmp);            
+                                 
+                                 cout << "           Nombre:" << splited[0] << "-Salto:"<< splited[1]<<endl; 
+                                                   
+                                string a=splited[0];
+                                char nom[sizeof(splited[1])];
+                                for (int j=0;j<sizeof(nom);j++)
+                                {
+                                    nom[j]=splited[1].at(j);
+                                }
+                                double b= atof(nom);
+                                Canguro tmp(a,b);  
+                                lista->add(i-1,&tmp);     
+                               //     cout << a << b;*/
                                 }
                                
                            }
@@ -123,6 +134,8 @@ int main(int argc, char *argv[])
         
         if(option==0) break;       
     }
+    
+    delete lista;
 
     system("PAUSE");
     return EXIT_SUCCESS;

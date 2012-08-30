@@ -40,7 +40,7 @@ namespace KangaParty
           };
           
           Canguro& Canguro::operator= (const Canguro &source){
-          this->_id = source._id;
+                          this->_id = source._id;
                           this->nombre = source.nombre;
                           this->jumpHeight= source.jumpHeight; 
           };
@@ -53,6 +53,7 @@ namespace KangaParty
           {             
                  stringstream out;
                  
+                                  
                  if(atributo == "id"){out<<_id; return out.str();}
                  if(atributo == "nombre") return nombre;
                  if(atributo == "jumpHeight"){out<<jumpHeight; return out.str();}
