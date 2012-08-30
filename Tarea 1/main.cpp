@@ -87,16 +87,48 @@ int main(int argc, char *argv[])
         cout << "0. Salir" << endl;
         cin >> option;
         
+        if(option==1)
+        {
+                     cout << "Funcion 1 no implementada todavia" << endl;
+                     }
+        if(option==2)
+        {
+                     cout << "Funcion 2 no implementada todavia" << endl;
+                     }
+        if(option==3)
+        {
+                     cout << "Funcion 3 no implementada todavia" << endl;
+                     }
+        if(option==4)
+        {
+                     if(lista->isEmpty())
+                     {cout << "No ha llegado ningun canguro a la fiesta aun" << endl;}
+                     else
+                     {
+                        lista->printList();
+                     }
+        }
+        if(option==5)
+        {
+                     cout << "Funcion 5 no implementada todavia" << endl;
+                     }
+        if(option==6)
+        {
+                     cout << "Funcion 6 no implementada todavia" << endl;
+                     }
         if(option==7)
         {
                      char name[40];
                      cout << "Ingrese el nombre del archivo" << endl;
                      cin >> name;
                      ifstream file;
-                     file.open(name);
-                     if (file.is_open())
+                     
+                     if (ifstream(name))
                      {
+                         file.open(name);
+                         if(file.is_open()){
                          int i=0;
+                         int j=0;
                          string LINE;
                          while(!file.eof())
                          {
@@ -105,11 +137,29 @@ int main(int argc, char *argv[])
                            {}
                            else
                            {
+                               if(i%250==0)
+                               {
+                                          if (j==0)
+                                          {
+                                           cout << "Carngando." << endl;
+                                           j=(j+1)%3;
+                                                   }
+                                          else if (j==1)
+                                          {
+                                           cout << "Carngando. ." << endl;
+                                           j=(j+1)%3;
+                                           }
+                                          else if (j==2)
+                                          {
+                                          cout << "Carngando. . ." << endl;
+                                          j=(j+1)%3;
+                                           }
+                               }
                                vector<string> splited=split(LINE,'\t');
                                if(splited.size()==2)
                                {
                                  
-                                 cout << "           Nombre:" << splited[0] << "-Salto:"<< splited[1]<<endl; 
+                                 
                                                    
                                 string a=splited[0];
                                 char nom[sizeof(splited[1])];
@@ -118,15 +168,20 @@ int main(int argc, char *argv[])
                                     nom[j]=splited[1].at(j);
                                 }
                                 double b= atof(nom);
-                                Canguro tmp(a,b);  
-                                lista->add(i-1,&tmp);     
-                               //     cout << a << b;*/
+                                Canguro* tmp=new Canguro(a,b);  
+                                lista->add(lista->size(),tmp);     
                                 }
                                
                            }
                            i++;
                          }
+                         }
                          file.close();
+                         cout << "Carga completa!" << endl;
+                     }
+                     else
+                     {
+                         cout << "Error: File doesn't exists" << endl;
                      }
                                      
                      

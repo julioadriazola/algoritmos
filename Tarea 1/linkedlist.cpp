@@ -18,7 +18,7 @@ LinkedList::LinkedList()
 
 LinkedList::~LinkedList()
 {
-    cout << "Se destruyo la casita Linked de los canguros" << endl;
+    cout << "Se destruyo la casita Linked de los canguros. Se acabo la fiesta." << endl;
     _cursor->preDestroy();
 	delete _cursor;
 }
@@ -29,7 +29,7 @@ LinkedList::LinkedList(const LinkedList& source)
 {            
              _cursor=source._cursor;
             _length=source._length; 
-            cout << "se copia" << endl;
+            //cout << "se copia" << endl;
 }
 
 //Sobrecarga =
@@ -42,7 +42,7 @@ LinkedList& LinkedList::operator= (const LinkedList &source)
             }
             _cursor=source._cursor;
             _length=source._length;
-            cout << "se sobrecarga" << endl;
+            //cout << "se sobrecarga" << endl;
             
             return *this;
 }
@@ -164,14 +164,18 @@ void LinkedList::print(int index)
 
 void LinkedList::print()
 {
+     cout << "******************************************************"<< endl;
      LinkedNode* tmp=_cursor;
      while(tmp!=NULL)
      {
-     cout <<endl <<"     info: -id: "<<(tmp->getContent())->show("id")<<endl;
-     cout <<"           -nombre: " <<(tmp->getContent())->show("nombre")<<"   -altura de salto: "<<(tmp->getContent())->show("jumpHeight")<<endl;     
+     (tmp->getContent())->printInfo(false);    
      tmp=tmp->getNext();
      }
 }
 
+void LinkedList::printList()
+{
+     print();
+ }
 
 }

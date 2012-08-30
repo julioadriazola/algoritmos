@@ -46,7 +46,7 @@ namespace KangaParty
           };
           
           Canguro::~Canguro(){ 
-                         cout << "SE DESTRUYO EL CANGURO " << _id << endl;                                       
+                         //cout << "SE DESTRUYO EL CANGURO " << _id << endl;                                       
           };
           
           string Canguro::show(string atributo)
@@ -57,5 +57,22 @@ namespace KangaParty
                  if(atributo == "id"){out<<_id; return out.str();}
                  if(atributo == "nombre") return nombre;
                  if(atributo == "jumpHeight"){out<<jumpHeight; return out.str();}
+          }
+          
+          void Canguro::printInfo(bool withHeader)
+          {
+               if(withHeader)
+               {
+                cout <<"     info: -id: "<<_id << ":           -nombre: " << nombre << "                           -altura de salto: " << jumpHeight << endl;
+               }
+               else
+               {
+                  
+                   if(nombre.size>=8)          
+                   cout <<_id << "\t\t" << nombre << "\t"<< jumpHeight << endl;
+                   else
+                   cout <<_id << "\t\t" << nombre << "\t\t"<< jumpHeight << endl;
+               }
+                 // cout <<"           -nombre: " <<show("nombre")<<"   -altura de salto: "<<show("jumpHeight")<<endl;
           }
 }

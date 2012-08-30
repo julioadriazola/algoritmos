@@ -14,7 +14,7 @@ namespace KangaParty
 ArrayList::ArrayList(int length)
 {
 	canguroList = new Canguro *[length];
-	this->_length = length;
+	this->_length = 0;
 	this->arrayLength = length;
 	for(int i=0; i<length; i++)
 	{
@@ -36,7 +36,7 @@ void ArrayList::add(int index, Canguro * nuevoCang)
              return;
     }
     
-    cout <<endl<<"@@@Agregando al canguro "<< nuevoCang->show("nombre") <<" a la lista@@@"<< endl;
+    //cout <<endl<<"@@@Agregando al canguro "<< nuevoCang->show("nombre") <<" a la lista@@@"<< endl;
     
     _length++;
     
@@ -87,7 +87,7 @@ Canguro ArrayList::get(int index)
 
 bool ArrayList::isEmpty()
 {
-     if(canguroList[0]==0) return true; //puntero que no apunta a nada apunta a la dirección 0 (null)
+     if(_length==0) return true; //puntero que no apunta a nada apunta a la dirección 0 (null)
      else return false;                               
 }
 
@@ -103,21 +103,23 @@ void ArrayList::remove(int position)
 }
 
 void ArrayList::print()
-{
-     
-     for(int i=0; i<arrayLength; i++)
+{  cout << "******************************************************"<< endl;
+     for(int i=0; i<_length; i++)
      {
-             if(canguroList[i]==NULL){cout << endl <<"===Posicion "<<i<<": Puntero a direccion: 0===" << endl;}
-             else print(i);
+             if(canguroList[i]==NULL){cout << "Error: NULL reference" <<endl;}
+             else canguroList[i]->printInfo(false);
      }
 }
 
 void ArrayList::print(int index)
 {     
-              cout << endl << "===Posicion "<<index<<": Puntero a direccion: " << canguroList[index] <<"==="<<endl;
-              cout <<endl <<"     info: -id: "<<canguroList[index]->show("id")<<endl;
-              cout <<"           -nombre: " <<canguroList[index]->show("nombre")<<"   -altura de salto: "<<canguroList[index]->show("jumpHeight")<<endl;
+             canguroList[index]->printInfo(true);
          
 }
+
+void ArrayList::printList()
+{
+     print();
+ }
 
 }

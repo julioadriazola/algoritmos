@@ -17,22 +17,22 @@ LinkedNode::LinkedNode(Canguro * content, LinkedNode * next)
 {
 this->_content=content;
 this->_next=next;
-cout << "Se creo el LinkedNode en la posicion: "<<this<<endl;
-mostrarTodo();                              
+//cout << "Se creo el LinkedNode en la posicion: "<<this<<endl;
+//mostrarTodo();                              
                                }
                                
 LinkedNode::LinkedNode(Canguro * content)
 {
 this->_content=content;
 this->_next=NULL;
-cout << "Se creo el LinkedNode en la posicion: "<<this<<endl;
-mostrarTodo();
+//cout << "Se creo el LinkedNode en la posicion: "<<this<<endl;
+//mostrarTodo();
                                }
                                
 LinkedNode::LinkedNode(const LinkedNode& source)
 {            
              *this=source;
-            cout << "se copia" << endl;
+            //cout << "se copia" << endl;
 }
 
 //Sobrecarga =
@@ -43,7 +43,7 @@ LinkedNode& LinkedNode::operator= (const LinkedNode &source)
             
             _content=source._content;
             _next=source._next;
-            cout << "se sobrecarga" << endl;
+            //cout << "se sobrecarga" << endl;
             return *this;
 }
                                
@@ -57,7 +57,7 @@ void LinkedNode::mostrarTodo()
 //Problema aquí D: En tiempo de ejecución funciona bien
 //Al terminar pasa algo raro y se queda en un ciclo infinito ¿Cómo solucionarlo?
 LinkedNode::~LinkedNode(){
-	cout << "murio el LinkedNode en una explosion :(" << endl;
+	//cout << "murio el LinkedNode en una explosion :(" << endl;
 }
 
 void LinkedNode::preDestroy()

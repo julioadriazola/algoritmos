@@ -28,6 +28,7 @@ class Canguro
 			Canguro& operator= (const Canguro &source); //asignación		
 			~Canguro(); //destructor
 			string show(string atributo);
+			void printInfo(bool withHeader);
 		
 		private:
                 

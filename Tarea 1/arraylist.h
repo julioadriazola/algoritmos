@@ -29,6 +29,7 @@ class ArrayList: public IListable
 		virtual Canguro get(int index);
 		virtual bool isEmpty();
 		virtual void remove(int position);
+		virtual void printList();
 		//=================
 		
 		void print();
