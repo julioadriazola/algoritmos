@@ -76,21 +76,29 @@ int main(int argc, char *argv[])
     while(true)
     {
         cout << "MENU" << endl;
-        cout << "1. Consultar por altura de salto" << endl;
-        cout << "2. Consultar por nombre" << endl;
-        cout << "3. Consultar por altura y nombre" << endl;
-        cout << "4. Listar a todos los canguros" << endl;
-        cout << "5. Consultar existencia" << endl; //<---?????
-        cout << "6. Eliminar un canguro" << endl;
-        cout << "7. Agregar canguros desde un archivo" <<endl;
+        cout << "1. Agregar Canguro manualmente" << endl;
+        cout << "2. Consultar por altura de salto" << endl;
+        cout << "3. Consultar por nombre" << endl;
+        cout << "4. Consultar por altura y nombre" << endl;
+        cout << "5. Listar a todos los canguros" << endl;
+        cout << "6. Consultar existencia" << endl; //<---?????
+        cout << "7. Eliminar un canguro" << endl;
+        cout << "8. Agregar canguros desde un archivo" <<endl;
         cout <<endl  << endl << endl;
         cout << "0. Salir" << endl;
         cin >> option;
         
         if(option==1)
         {
-                     cout << "Funcion 1 no implementada todavia" << endl;
+                     cout << "Ingrese el numero de Canguros a ingresar" << endl;
+                     int cant;
+                     cin >> cant;
+                     for(int i =0; i< cant; i++)
+                     {
+                             Canguro* tmp= new Canguro(0);
+                             lista->add(lista->size(),tmp);
                      }
+        }
         if(option==2)
         {
                      cout << "Funcion 2 no implementada todavia" << endl;
@@ -101,6 +109,10 @@ int main(int argc, char *argv[])
                      }
         if(option==4)
         {
+                     cout << "Funcion 4 no implementada todavia" << endl;
+                     }
+        if(option==5)
+        {
                      if(lista->isEmpty())
                      {cout << "No ha llegado ningun canguro a la fiesta aun" << endl;}
                      else
@@ -108,11 +120,11 @@ int main(int argc, char *argv[])
                         lista->printList();
                      }
         }
-        if(option==5)
+        if(option==6)
         {
                      cout << "Funcion 5 no implementada todavia" << endl;
                      }
-        if(option==6)
+        if(option==7)
         {
                      if (lista->isEmpty())
                      {
@@ -133,7 +145,7 @@ int main(int argc, char *argv[])
                           }
                      }
         }
-        if(option==7)
+        if(option==8)
         {
                      char name[40];
                      cout << "Ingrese el nombre del archivo" << endl;

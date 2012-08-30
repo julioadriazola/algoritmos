@@ -172,7 +172,7 @@ void LinkedList::print(int index)
 void LinkedList::print()
 {
      cout << "******************************************************"<< endl;
-     cout << "POSICION LISTA\t\t ID\t\tNOMBRE\t\tALTURA DE SALTO"<<endl;
+     cout << "POSICION\tID\t\tNOMBRE\t\tALTURA DE SALTO"<<endl;
      LinkedNode* tmp=_cursor;
      int post=0;
      while(tmp!=NULL)

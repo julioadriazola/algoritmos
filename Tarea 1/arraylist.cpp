@@ -16,10 +16,6 @@ ArrayList::ArrayList(int length)
 	canguroList = new Canguro *[length];
 	this->_length = 0;
 	this->arrayLength = length;
-	for(int i=0; i<length; i++)
-	{
-        canguroList[i] = new Canguro();     //Y no se pone como puntero?? =(       
-    }
 }
 
 // class destructor
@@ -115,7 +111,7 @@ void ArrayList::remove(int position)
 
 void ArrayList::print()
 {  cout << "******************************************************"<< endl;
-     cout << "POSICION LISTA\t\t ID\t\tNOMBRE\t\tALTURA DE SALTO"<<endl;
+     cout << "POSICION\tID\t\tNOMBRE\t\tALTURA DE SALTO"<<endl;
      for(int i=0; i<_length; i++)
      {
              if(canguroList[i]==NULL){cout << "Error: NULL reference" <<endl;}
