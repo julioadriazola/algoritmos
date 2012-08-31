@@ -4,9 +4,6 @@
 #include <iostream>
 #include <sstream>
 
-//Por qué this->_id = source._id + 1; (En método copia) ??? Filo
-//Por qué no está definido el método del operador = ???
-//Qué hace " que estaba en "<<this ??
 
 
 namespace KangaParty
@@ -63,7 +60,7 @@ namespace KangaParty
           {
                if(withHeader)
                {
-                cout <<"     info: -id: "<<_id << ":" <<endl<< "           -nombre: " << nombre << "                           -altura de salto: " << jumpHeight << endl;
+                cout <<"  \nInfo: \t\tID: "<<_id << endl<< "\t\tNOMBRE: " << nombre << "\tALTURA DE SALTO: " << jumpHeight << endl << endl;
                }
                else
                {
@@ -75,4 +72,7 @@ namespace KangaParty
                }
                  // cout <<"           -nombre: " <<show("nombre")<<"   -altura de salto: "<<show("jumpHeight")<<endl;
           }
+          
+          double Canguro::getJH() {return jumpHeight;}
+          int Canguro::getID() {return _id;}
 }

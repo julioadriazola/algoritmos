@@ -13,7 +13,7 @@ namespace KangaParty
 class ArrayList: public IListable
 {
     private:  
-      Canguro **canguroList; //Explicame esto porfa xD Por qué ** y no simplemente *?
+      Canguro **canguroList; 
       int _length; //cantidad de CANGUROS
       int arrayLength;
       
@@ -22,6 +22,7 @@ class ArrayList: public IListable
            
 		ArrayList(int length);
 		~ArrayList();
+		ArrayList& operator= (const ArrayList& source);
 		
 		//===De Interfaz===
 		virtual int size();
@@ -30,10 +31,13 @@ class ArrayList: public IListable
 		virtual bool isEmpty();
 		virtual void remove(int position);
 		virtual void printList();
+		virtual void consulta();
+		virtual Canguro* getPointer(int index);
 		//=================
 		
 		void print();
 		void print(int index);
+		
 };
 }
 #endif // ARRAYLIST_H

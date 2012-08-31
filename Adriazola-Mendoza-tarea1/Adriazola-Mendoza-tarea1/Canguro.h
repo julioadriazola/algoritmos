@@ -15,9 +15,12 @@ namespace KangaParty
 {
 class Canguro
 	{
+             private:
+ 
           int _id;
           double jumpHeight;
           string nombre;
+          static int count;
        
 		public:
 			
@@ -29,10 +32,11 @@ class Canguro
 			~Canguro(); //destructor
 			string show(string atributo);
 			void printInfo(bool withHeader);
-		
-		private:
+			double getJH();
+			int getID();
+
                 
-                static int count;
+                
 		
 	};
 }

@@ -15,8 +15,9 @@
 using namespace std;
 using namespace KangaParty;
 
-
+//REFERENCIA: // CODIGO DE USUARIO "GCDude" EN http://forums.techguy.org/software-development/502266-c-string-split-array.html
 vector<string> split(const string& strValue, char separator)
+//FIN REFERENCIA 
 {
     vector<string> vecstrResult;
     int startpos=0;
@@ -44,10 +45,6 @@ vector<string> split(const string& strValue, char separator)
 int main(int argc, char *argv[])
 {
     
-    //********IMPORTANTE. VER EL ENUNCIADO PARA QUE NO FALTE NADA
-    //****CONSTRUCTOR DESTRUCTOR COPIA Y OPERADOR =
-    //****** MENU PARA CONSULTAR POR NOMBRE O ALTURA, Y LISTAR TODOS LOS CANGUROS
-    //***** E INGRESO CANGUROS POR ARCHIVOS
     cout << "Bienvenido a la Fiesta de los Canguros!!" << endl;
     
     int op;
@@ -60,8 +57,7 @@ int main(int argc, char *argv[])
           cin >> op;
           if(op==1 || op==2) break;
     }
-    
-    //Aqui se supone que hay que usar la interfaz
+  
     IListable* lista;
     if(op==1)
     {
@@ -75,33 +71,22 @@ int main(int argc, char *argv[])
     int option;
     while(true)
     {
-        if(op==1)
-        cout << "MENU - Implementacion ArrayList -" << endl;
-        else
-        cout << "MENU - Implementacion LinkedList -" << endl;
+        cout << endl;
+        cout << "MENU" << endl;
         cout << "1. Agregar Canguro manualmente" << endl;
-        cout << "2. Consultar por altura de salto" << endl;
-        cout << "3. Consultar por nombre" << endl;
-        cout << "4. Consultar por altura y nombre" << endl;
-        cout << "5. Listar a todos los canguros" << endl;
-        cout << "6. Consultar existencia" << endl; //<---?????
-        cout << "7. Eliminar un canguro" << endl;
-        cout << "8. Agregar canguros desde un archivo" <<endl;
-        if(op==1)
-        {
-        cout << "9. Cambiar de Implementacion a LinkedList" <<endl;
-        }
-        else
-        {
-            cout << "9. Cambiar de Implementacion a ArrayList" << endl;
-        }
-        cout <<endl  << endl << endl;
+        cout << "2. Cambiar el tipo de lista" << endl;
+        cout << "3. Listar a todos los canguros" << endl; 
+        cout << "4. Eliminar un canguro" << endl;
+        cout << "5. Agregar canguros desde un archivo" <<endl;
+        cout << "6. Hacer una consulta" <<endl;
+        cout <<endl  << endl;
         cout << "0. Salir" << endl;
         cin >> option;
+
         
         if(option==1)
         {
-                     cout << "Ingrese el numero de Canguros a ingresar" << endl;
+                     cout << "Ingrese el numero de Canguros a agregar" << endl;
                      int cant;
                      cin >> cant;
                      for(int i =0; i< cant; i++)
@@ -110,19 +95,46 @@ int main(int argc, char *argv[])
                              lista->add(lista->size(),tmp);
                      }
         }
+        
         if(option==2)
         {
-                     cout << "Funcion 2 no implementada todavia" << endl;
-                     }
+              //Es arrayList
+              cout << "Cambiando Implementacion a";
+              if(op==1)
+              {
+                       cout << " Linked List..." << endl;
+                       op=2;
+                       
+                       IListable* listaTemp = new LinkedList();           
+                       
+                       for(int i = 0; i<lista->size(); i++)
+                       {
+                          listaTemp->add(i,lista->getPointer(i));                       
+                       } 
+                       
+                       lista=listaTemp; 
+                       
+              }
+              else
+              {
+                  cout << " Array List..." << endl;
+                  op=1;
+                  
+                  IListable* listaTemp = new ArrayList(100);           
+                       
+                       for(int i = 0; i<lista->size(); i++)
+                       {
+                          listaTemp->add(i,lista->getPointer(i));                       
+                       } 
+                       
+                       lista=listaTemp;
+
+              }       
+        }
+        
+        if(option==0) break;
+        
         if(option==3)
-        {
-                     cout << "Funcion 3 no implementada todavia" << endl;
-                     }
-        if(option==4)
-        {
-                     cout << "Funcion 4 no implementada todavia" << endl;
-                     }
-        if(option==5)
         {
                      if(lista->isEmpty())
                      {cout << "No ha llegado ningun canguro a la fiesta aun" << endl;}
@@ -131,11 +143,8 @@ int main(int argc, char *argv[])
                         lista->printList();
                      }
         }
-        if(option==6)
-        {
-                     cout << "Funcion 5 no implementada todavia" << endl;
-                     }
-        if(option==7)
+        
+        if(option==4)
         {
                      if (lista->isEmpty())
                      {
@@ -156,7 +165,7 @@ int main(int argc, char *argv[])
                           }
                      }
         }
-        if(option==8)
+        if(option==5)
         {
                      char name[40];
                      cout << "Ingrese el nombre del archivo" << endl;
@@ -197,16 +206,19 @@ int main(int argc, char *argv[])
                                }
                                vector<string> splited=split(LINE,'\t');
                                if(splited.size()==2)
-                               {         
-                                    string a=splited[0];
-                                    char nom[sizeof(splited[1])];
-                                    for (int j=0;j<sizeof(nom);j++)
-                                    {
-                                        nom[j]=splited[1].at(j);
-                                    }
-                                    double b= atof(nom);
-                                    Canguro* tmp=new Canguro(a,b);  
-                                    lista->add(lista->size(),tmp);     
+                               {
+                                 
+                                 
+                                                   
+                                string a=splited[0];
+                                char nom[sizeof(splited[1])];
+                                for (int j=0;j<sizeof(nom);j++)
+                                {
+                                    nom[j]=splited[1].at(j);
+                                }
+                                double b= atof(nom);
+                                Canguro* tmp=new Canguro(a,b);  
+                                lista->add(lista->size(),tmp);     
                                 }
                                
                            }
@@ -224,24 +236,7 @@ int main(int argc, char *argv[])
                      
         }
         
-        if(option==9)
-        {
-              //Es arrayList
-              cout << "Cambiando Implementacion..." << endl;
-              if(op==1)
-              {
-                       op=2;
-                       delete lista;
-                       lista= new LinkedList();
-                       
-              }
-              else
-              {
-                  op=1;
-                  delete lista;
-                  lista= new ArrayList(100);
-              }       
-        }
+        if(option==6) lista->consulta();
         
         if(option==0) break;       
     }
