@@ -75,7 +75,10 @@ int main(int argc, char *argv[])
     int option;
     while(true)
     {
-        cout << "MENU" << endl;
+        if(op==1)
+        cout << "MENU - Implementacion ArrayList -" << endl;
+        else
+        cout << "MENU - Implementacion LinkedList -" << endl;
         cout << "1. Agregar Canguro manualmente" << endl;
         cout << "2. Consultar por altura de salto" << endl;
         cout << "3. Consultar por nombre" << endl;
@@ -84,6 +87,14 @@ int main(int argc, char *argv[])
         cout << "6. Consultar existencia" << endl; //<---?????
         cout << "7. Eliminar un canguro" << endl;
         cout << "8. Agregar canguros desde un archivo" <<endl;
+        if(op==1)
+        {
+        cout << "9. Cambiar de Implementacion a LinkedList" <<endl;
+        }
+        else
+        {
+            cout << "9. Cambiar de Implementacion a ArrayList" << endl;
+        }
         cout <<endl  << endl << endl;
         cout << "0. Salir" << endl;
         cin >> option;
@@ -186,19 +197,16 @@ int main(int argc, char *argv[])
                                }
                                vector<string> splited=split(LINE,'\t');
                                if(splited.size()==2)
-                               {
-                                 
-                                 
-                                                   
-                                string a=splited[0];
-                                char nom[sizeof(splited[1])];
-                                for (int j=0;j<sizeof(nom);j++)
-                                {
-                                    nom[j]=splited[1].at(j);
-                                }
-                                double b= atof(nom);
-                                Canguro* tmp=new Canguro(a,b);  
-                                lista->add(lista->size(),tmp);     
+                               {         
+                                    string a=splited[0];
+                                    char nom[sizeof(splited[1])];
+                                    for (int j=0;j<sizeof(nom);j++)
+                                    {
+                                        nom[j]=splited[1].at(j);
+                                    }
+                                    double b= atof(nom);
+                                    Canguro* tmp=new Canguro(a,b);  
+                                    lista->add(lista->size(),tmp);     
                                 }
                                
                            }
@@ -214,6 +222,25 @@ int main(int argc, char *argv[])
                      }
                                      
                      
+        }
+        
+        if(option==9)
+        {
+              //Es arrayList
+              cout << "Cambiando Implementacion..." << endl;
+              if(op==1)
+              {
+                       op=2;
+                       delete lista;
+                       lista= new LinkedList();
+                       
+              }
+              else
+              {
+                  op=1;
+                  delete lista;
+                  lista= new ArrayList(100);
+              }       
         }
         
         if(option==0) break;       
