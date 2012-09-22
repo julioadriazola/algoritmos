@@ -46,14 +46,24 @@ int main(int argc, char *argv[])
         {
                    cout << "Indique la parte de la Tarea que desea poner a prueba" << endl;
                    cout << "1. ParteA: Prueba sobre inputs simples"<< endl;
-                   cout << "2. ParteB: Comparar rendimientos a mayor escala" << endl<< endl;
+                   cout << "2. ParteB: Comparar rendimientos a mayor escala" << endl;
+                   cout << "3. Ver creditos" << endl << endl;
                    cout << "0. Salir "<< endl << endl;
                    cin >>op;
                    if(op==0) break;
                    if(op==3)
                    {
-                            
-                            }
+                     cout << " ---------------------------------------------------------------------------- " << endl;
+                     cout << "|                                                                            |" << endl;
+                     cout << "|\tTrabajo realizado por:                                               |" << endl;
+                     cout << "|\t\tJulio Adriazola                                              |"<< endl;
+                     cout << "|\t\tJose Manuel Mendoza                                          |"<< endl;
+                     cout << "|\t\tSeptiembre - 2012                                            |"<< endl;
+                     cout << "|                                                                            |" << endl;
+                     cout << "|                                                                            |" << endl;
+                     cout << "|              Pontificia Universidad Catolica de Chile                      |" << endl;  
+                     cout << " ---------------------------------------------------------------------------- " << endl;   
+                   }
                    if(op==1)
                    {        
                             AVL* avl=new AVL();

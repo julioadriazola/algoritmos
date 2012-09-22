@@ -1,0 +1,42 @@
+# Project: Tarea2
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = main.o avl.o rbt.o treap.o binnode.o $(RES)
+LINKOBJ  = main.o avl.o rbt.o treap.o binnode.o $(RES)
+LIBS =  -L"D:/Dev-Cpp/lib" -g  
+INCS =  -I"D:/Dev-Cpp/include" 
+CXXINCS =  -I"D:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"D:/Dev-Cpp/include/c++/3.4.2/backward"  -I"D:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"D:/Dev-Cpp/include/c++/3.4.2"  -I"D:/Dev-Cpp/include" 
+BIN  = Tarea2.exe
+CXXFLAGS = $(CXXINCS)   -g
+CFLAGS = $(INCS)   -g
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Tarea2.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Tarea2.exe" $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+avl.o: avl.cpp
+	$(CPP) -c avl.cpp -o avl.o $(CXXFLAGS)
+
+rbt.o: rbt.cpp
+	$(CPP) -c rbt.cpp -o rbt.o $(CXXFLAGS)
+
+treap.o: treap.cpp
+	$(CPP) -c treap.cpp -o treap.o $(CXXFLAGS)
+
+binnode.o: binnode.cpp
+	$(CPP) -c binnode.cpp -o binnode.o $(CXXFLAGS)
