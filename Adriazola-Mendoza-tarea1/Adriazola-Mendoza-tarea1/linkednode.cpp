@@ -54,8 +54,7 @@ void LinkedNode::mostrarTodo()
      cout << "Next apunta a: "<<this->_next <<endl;
  }
  
-//Problema aquí D: En tiempo de ejecución funciona bien
-//Al terminar pasa algo raro y se queda en un ciclo infinito ¿Cómo solucionarlo?
+
 LinkedNode::~LinkedNode(){
 	//cout << "murio el LinkedNode en una explosion :(" << endl;
 }
@@ -76,7 +75,6 @@ LinkedNode * LinkedNode::getNext()
 }          
 void LinkedNode::setNext(LinkedNode * next)
 {
-     //Ver si es necesario agregar el "destroy" o si se puede ver por fuera
          if(_next==NULL)
          {
                 this->_next=next;   

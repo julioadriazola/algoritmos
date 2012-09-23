@@ -34,10 +34,13 @@ class LinkedList: public IListable
 		virtual bool isEmpty();
 		virtual void remove(int position);
 		virtual void printList();
+		virtual void consulta();
+		virtual Canguro* getPointer(int index);
 		//=================
 		
 		void print();
 		void print(int index);
+		
 };
 }
 #endif // LINKEDLIST_H
