@@ -16,7 +16,9 @@ class AVL : public ITreeable
 		BinNode* FindInFather(BinNode* node, string Key, bool ignoreCase);//Retorna el padre
 		BinNode* Equilibrar(BinNode* node);
 		string PrettyPrint(BinNode* node, string Constant);
+		string PrettyHelp(BinNode* From, BinNode* To, string Constant);
 		void Refresh(BinNode* node);
+		int RefreshPrettyOrder(BinNode* node, int Value);
 		int _inserciones;
 		int _rotaciones;
 		

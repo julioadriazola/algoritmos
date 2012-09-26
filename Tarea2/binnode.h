@@ -21,6 +21,7 @@ class BinNode
             int _altura;              
 	public:
            //*Treap
+           int prettyOrder;
             BinNode(string Key, string Value, BinNode* Father, bool Left);
 		   ~BinNode();
            int TreapKey;

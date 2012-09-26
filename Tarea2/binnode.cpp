@@ -24,6 +24,7 @@ Father->setSon(Left,this);}
 else
 {//cout << " y es el root";}
 //cout << endl;*/
+this->prettyOrder=0;
 }
 
 
