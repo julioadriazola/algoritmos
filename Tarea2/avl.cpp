@@ -533,16 +533,59 @@ string AVL::PrettyPrint(BinNode* node, string Constant)
 {
      string tmp= "";
      if(node->Son(false)!=NULL)
+     tmp+=PrettyPrint(node->Son(false),"");
+     tmp+=PrettyHelp(_root,node,"");
+     if(node->Son(true)!=NULL)
+     tmp+=PrettyPrint(node->Son(true),"");
+     /*if(node->Son(false)!=NULL)
      tmp+=PrettyPrint(node->Son(false),Constant+"\t\t|");
      tmp+=Constant + "--" + node->getKey() + "\n";
      if(node->Son(true)!=NULL)
-     tmp+=PrettyPrint(node->Son(true),Constant+"\t\t|");
+     tmp+=PrettyPrint(node->Son(true),Constant+"\t\t|");*/
      return tmp;
+}
+
+string AVL::PrettyHelp(BinNode* From, BinNode* To, string Constant)
+{
+       int tmp=To->prettyOrder;
+       if(To->getKey().compare(From->getKey())>0) //Está a la derecha del nodo
+       {
+             int tmp1=From->Son(false)->prettyOrder;
+             if(tmp1>tmp)
+             return PrettyHelp(From->Son(false),To,Constant+"\t\t\t");
+             else
+             return PrettyHelp(From->Son(false),To,Constant+"\t\t\t|");
+       }
+       else if(To->getKey().compare(From->getKey())<0)
+       {
+             int tmp1=From->Son(true)->prettyOrder;
+             if(tmp1<tmp)
+             return PrettyHelp(From->Son(true),To,Constant+"\t\t\t");
+             else
+             return PrettyHelp(From->Son(true),To,Constant+"\t\t\t|");
+       }
+       else
+       {
+           return Constant+"--" + To->getKey() + "\n";
+       }
 }
 
 string AVL::PrettyPrint()
 {
+     RefreshPrettyOrder(_root,1);
      return PrettyPrint(_root,"");
  }
+ 
+int AVL::RefreshPrettyOrder(BinNode* node, int Value)
+{
+    int tmp=Value;
+    if(node->Son(false)!=NULL)
+    tmp=RefreshPrettyOrder(node->Son(false),tmp)+1;
+    node->prettyOrder=tmp; tmp++;
+    if(node->Son(true)!=NULL)
+    tmp=RefreshPrettyOrder(node->Son(true),tmp)+1;
+    return tmp;
+    
+}
 
 //}
