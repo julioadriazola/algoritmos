@@ -21,6 +21,10 @@ class AVL : public ITreeable
 		int RefreshPrettyOrder(BinNode* node, int Value);
 		int _inserciones;
 		int _rotaciones;
+		double count(BinNode* node);
+		double sumAltura(BinNode* node);
+		string dump(BinNode* node);
+		double distance(BinNode* node);
 		
 		
 		//void balancear(BinNode* node);
@@ -36,6 +40,10 @@ class AVL : public ITreeable
 		virtual void Insert(string Key, string Value, bool ignoreCase, int Priority);
 		virtual int FindFrequency(string Key, bool ignoreCase);
 		virtual string PrettyPrint();
+		void Rotaciones();
+		void Inserciones();
+		void AlturaPromedio();
+		string SortedDump();
 };
 
 //}

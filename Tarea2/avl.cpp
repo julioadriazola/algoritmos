@@ -344,16 +344,17 @@ void AVL::Refresh(BinNode* node)
 void AVL::Delete(string Key, bool ignoreCase)
 {
      BinNode* tmp=FindIn(this->_root,Key,ignoreCase);
-     if(tmp==NULL)cout<< "El Nodo no se encontro" << endl;
+     if(tmp==NULL);//cout<< "El Nodo no se encontro" << endl;
      else
      {
-     cout << "El nodo se encontro" << endl;
+//     cout << "El nodo se encontro" << endl;
      if(tmp->Son(true)==NULL && tmp->Son(false)==NULL) // Es hoja
-     { cout << "Es hoja" << endl;
+     {
+//                              cout << "Es hoja" << endl;
                              BinNode* Father= tmp->Father();
           if(Father!=NULL) //No es el root [root no tiene padre]
           {
-                           cout << "Tiene padre" << endl;
+//                           cout << "Tiene padre" << endl;
                BinNode* fat=tmp->Father();
                if(fat->Son(true)==tmp) fat->setSon(true, NULL);
                if(fat->Son(false)==tmp) fat->setSon(false, NULL);
@@ -572,8 +573,10 @@ string AVL::PrettyHelp(BinNode* From, BinNode* To, string Constant)
 
 string AVL::PrettyPrint()
 {
+if(_root!=NULL){
      RefreshPrettyOrder(_root,1);
-     return PrettyPrint(_root,"");
+     return PrettyPrint(_root,"");}
+     else return "El árbol está vacío";
  }
  
 int AVL::RefreshPrettyOrder(BinNode* node, int Value)
@@ -586,6 +589,99 @@ int AVL::RefreshPrettyOrder(BinNode* node, int Value)
     tmp=RefreshPrettyOrder(node->Son(true),tmp)+1;
     return tmp;
     
+}
+
+void AVL::Rotaciones()
+{
+    cout<< "Rotaciones efectuadas: " << _rotaciones <<endl;
+}
+
+void AVL::Inserciones()
+{
+   cout<< "Cantidad de inserciones: " << _inserciones << endl;
+}
+
+void AVL::AlturaPromedio()
+{
+    if(_root!=NULL)
+    cout << "Altura Promedio: " << sumAltura(_root)/count(_root) << endl;
+    else
+    cout << "Altura Promedio: 0" << endl;
+}
+
+double AVL::count(BinNode* node)
+{
+    if(node!=NULL)
+    {
+         double c=0;
+         if(node->Son(true)!=NULL)
+         c=c+count(node->Son(true));
+         c++;
+         if(node->Son(false)!=NULL)
+         c=c+count(node->Son(false));
+         return c;
+    }
+    else
+    return 0;   
+}
+
+double AVL::sumAltura(BinNode* node)
+{
+    if(node!=NULL)
+    {
+         double c=0;
+         if(node->Son(true)!=NULL)
+         c=c+sumAltura(node->Son(true));
+         c=c+distance(node);
+         if(node->Son(false)!=NULL)
+         c=c+sumAltura(node->Son(false));
+         return c;
+    }
+    else
+    return 0;   
+}
+
+double AVL::distance(BinNode* node)
+{
+   if(node!=NULL)
+   { if (node==_root) return 0;
+    else
+    {
+        return 1 + distance (node->Father());
+    }
+   }
+   return 0;
+}
+
+string AVL::SortedDump()
+{
+       if(_root!=NULL)
+       {
+           return dump(_root);
+       }
+       else
+       return "Arbol vacio";
+}
+
+string AVL::dump(BinNode* node)
+{
+       if(node!=NULL){
+           string tmp="";
+           if(node->Son(true)!=NULL)
+           {
+                tmp=tmp+dump(node->Son(true));                  
+           }
+           char a[30];
+           itoa(node->Frequency(),a,10);
+           tmp=tmp+node->getKey()+"\t"+a+"\n";
+           if(node->Son(false)!=NULL)
+           {
+                tmp=tmp+dump(node->Son(false));
+           }
+           return tmp;
+       }
+       else return "";
+             
 }
 
 //}
