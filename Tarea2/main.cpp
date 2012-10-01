@@ -6,6 +6,8 @@
 #include <string>
 #include "avl.h"
 #include "binnode.h"
+#include "treap.h"
+#include "rbt.h"
 
 
 using namespace std;
@@ -67,8 +69,8 @@ int main(int argc, char *argv[])
                    if(op==1)
                    {        
                             AVL* avl=new AVL();
-//                            Treap treap=new Treap();
-//                            RBT redblack=new RBT();
+                            Treap* treap=new Treap();
+                            RBT* redblack=new RBT();
                             char name_in[40];
                             char name_out[40];
                             
@@ -95,22 +97,24 @@ int main(int argc, char *argv[])
                                                        {
                                                             string a=splited[1];
                                                             avl->Delete(a,false);
-                                                            //treap->Delete(a,false); 
-                                                            //redblack->Delete(a,false);   
+                                                            treap->Delete(treap->getRoot(), a); 
+                                                            redblack->Delete(a);   
                                                        }
                                                        else if(splited.size()==3) //insert key priority
                                                        {
                                                             string a=splited[1];
                                                             string tmp=splited[2];
+                                                                                                                      
                                                             char priority[tmp.length()];
                                                             for (int j=0; j<sizeof(priority);j++)
                                                             {
                                                                 priority[j]=splited[2].at(j);
                                                             }
                                                             int b=atoi(priority);
+                                                            
                                                             avl->Insert(a,""+b,false,0);
-                                                            //treap->Insert(a,""+b,false,0);
-                                                            //redblack->Insert(a,""+b,false,b);*/
+                                                            treap->Insert(treap->getRoot(),a,""+b,b,0, false);
+                                                            redblack->Insert(a,""+b);
                                                        }            
                                                   }
                                 }
@@ -118,10 +122,13 @@ int main(int argc, char *argv[])
                                 file_out.open(name_out);
                                 file_out << "[AVL]"<<endl;
                                 file_out << avl->PrettyPrint()<< endl;
-                                file_out << "[RN]"<<endl;
-                                //file_out << treap->PrettyPrint()<< endl;
+                                //delete avl;
                                 file_out << "[TREAP]"<<endl;
-                                //file_out << redblack->PrettyPrint()<< endl;
+                                file_out << treap->PrettyPrint()<< endl;
+                                //delete treap;
+                                file_out << "[RN]"<<endl;
+                                file_out << redblack->PrettyPrint()<< endl;
+                                //delete redblack;
                                 file_out.close();
                                 
                             }
@@ -136,7 +143,7 @@ int main(int argc, char *argv[])
          
          
          
-        /* AVL* avl=new AVL();
+         /*AVL* avl=new AVL();
          avl->Insert("B","Adriazola",false);
          avl->Insert("C","Adriazola",false);
          avl->Insert("D","Adriazola",false);

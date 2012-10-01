@@ -100,7 +100,34 @@ void BinNode::setFrequency(int freq)
 
 void BinNode::setKey(string Key)
 {
-     this->_key=Key;
+
+     this->_key = Key;
+}
+
+
+void BinNode::setColor(bool which)
+{
+     this->color = which;
+}
+
+bool BinNode:: getColor()
+{
+     return color;
+}
+
+bool BinNode:: IsNil()
+{
+     return isNil;
+}
+
+void BinNode:: setNil()
+{
+     isNil=true;
+}
+
+void BinNode:: setNotNil()
+{
+     isNil=false;
 }
 
 //}

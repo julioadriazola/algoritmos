@@ -22,6 +22,7 @@ class AVL : public ITreeable
 		int _inserciones;
 		int _rotaciones;
 		
+		
 		//void balancear(BinNode* node);
 	public:
            

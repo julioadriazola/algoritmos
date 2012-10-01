@@ -18,8 +18,12 @@ class BinNode
             string  _value;
             //Para contar la frecuencia necesaria para parte2                
             int _frecuencia;
-            int _altura;              
+            int _altura; 
+            bool color; //para RB
+            bool isNil; //para RB   
+                     
 	public:
+           
            //*Treap
            int prettyOrder;
             BinNode(string Key, string Value, BinNode* Father, bool Left);
@@ -39,6 +43,13 @@ class BinNode
 		   void setAltura(int altura);
 		   int Frequency();
 		   void setFrequency(int freq);
+		   
+		   void setColor(bool falseForBlack_trueForRed); // true = red, black = false
+		   bool getColor();
+		   bool IsNil();
+		   void setNil();
+		   void setNotNil();
+		   
 };
 
 
