@@ -609,13 +609,14 @@ void AVL::AlturaPromedio()
     cout << "Altura Promedio: 0" << endl;
 }
 
-double AVL::count(BinNode* node)
+double AVL::count(BinNode* node) //Cuenta las hojas
 {
     if(node!=NULL)
     {
          double c=0;
          if(node->Son(true)!=NULL)
          c=c+count(node->Son(true));
+         if(node->Son(true)==NULL && node->Son(false)==NULL) //Si es una hoja
          c++;
          if(node->Son(false)!=NULL)
          c=c+count(node->Son(false));
@@ -625,16 +626,17 @@ double AVL::count(BinNode* node)
     return 0;   
 }
 
-double AVL::sumAltura(BinNode* node)
+double AVL::sumAltura(BinNode* node) //Suma las distancias de todas las hojas
 {
     if(node!=NULL)
     {
          double c=0;
          if(node->Son(true)!=NULL)
          c=c+sumAltura(node->Son(true));
-         c=c+distance(node);
          if(node->Son(false)!=NULL)
          c=c+sumAltura(node->Son(false));
+         if(node->Son(true)==NULL && node->Son(false)==NULL) //Si es una hoja
+         c=c+distance(node);
          return c;
     }
     else
