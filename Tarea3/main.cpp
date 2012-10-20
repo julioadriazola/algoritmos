@@ -33,9 +33,10 @@ int main(int argc, char *argv[])
                                       while(!file.eof())
                                       {
                                            getline(file,LINE);
-                                           int input=StringToInt(LINE);
+                                           int input=atoi(LINE.c_str()); //Cast from String to Int
                                            if(i==-1)
                                            {
+                                                  cout << LINE << "  " << input << endl;
                                                   data=new int[input]; 
                                                   length= input;
                                            }
@@ -140,7 +141,6 @@ int main(int argc, char *argv[])
                 {
                     cout << "El archivo no existe o el nombre de entrada/salida es invalido. Adios!..." << endl;
                 }
-
     system("PAUSE");
     return EXIT_SUCCESS;
 }

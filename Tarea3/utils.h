@@ -35,14 +35,3 @@ static int* copiarArreglo(int* data, int length)
        }
        return tmp;
 }
-
-static int StringToInt(string txt)
-{
-       char chararray[txt.length()];
-       for (int j=0; j<sizeof(chararray);j++)
-       {
-           chararray[j]=txt.at(j);
-       }
-       int b=atoi(chararray);
-       return b;
-}
