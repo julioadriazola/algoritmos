@@ -36,7 +36,6 @@ int main(int argc, char *argv[])
                                            int input=atoi(LINE.c_str()); //Cast from String to Int
                                            if(i==-1)
                                            {
-                                                  cout << LINE << "  " << input << endl;
                                                   data=new int[input]; 
                                                   length= input;
                                            }
