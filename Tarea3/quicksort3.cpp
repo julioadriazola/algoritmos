@@ -28,12 +28,12 @@ void QuickSort3::QSort(int* data, int From, int To)
      if(To-From+1>1) //Largo > 1
      {
            //(Largo - 1)/2
-          int mitad=(int)floor(((To-From+1)-1)/2.0);
+          int mitad=(int)floor(((To-From+1)-1)/2.0)+From;
           int index=From;
           //Caso: La mitad es la mediana
-          if((data[From] < data[mitad] && data[mitad] < data[To]) || (data[From] > data[mitad] && data[mitad] > data[To])) index=mitad;
+          if((data[From] <= data[mitad] && data[mitad] <= data[To]) || (data[From] >= data[mitad] && data[mitad] >= data[To])) index=mitad;
           //Caso: El último es la mediana
-          else if((data[From] < data[To] && data[To] < data[mitad]) ||  (data[From] > data[To] && data[To] > data[mitad])) index=To;
+          else if((data[From] <= data[To] && data[To] <= data[mitad]) ||  (data[From] >= data[To] && data[To] >= data[mitad])) index=To;
           //Caso: eoc: El primer elemento es la mediana, o hay elementos iguales.
           else {}
           
